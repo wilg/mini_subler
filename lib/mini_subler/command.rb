@@ -26,6 +26,8 @@ module MiniSubler
         end
       end
       hash
+    rescue
+      nil
     end
 
   end
