@@ -33,16 +33,13 @@ module MiniSubler
     def set_metadata(file_path, hash)
       file_path = File.expand_path file_path
       line = Cocaine::CommandLine.new(self.command_path, "-dest :source -metadata :metadata", source: file_path, metadata: subler_hash_to_argument(hash_to_subler_hash(hash)))
-      puts line.command
       puts line.run
-    rescue
-      nil
     end
         
     def hash_to_subler_hash(h)
       n = {}
       h.each do |key, value|
-        n[key.to_s.titleize.gsub("Tv", "TV").gsub("Number", "#")] = value
+        n[key.to_s.titleize.gsub("Tv", "TV").gsub("Id", "ID").gsub("Number", "#")] = value
       end
       n
     end
@@ -64,7 +61,7 @@ module MiniSubler
     end
     
     def escape(s)
-      s.gsub("{", "&#123;").gsub("{", "&#125;").gsub(":", "&#58;")
+      s.to_s.gsub("{", "&#123;").gsub("{", "&#125;").gsub(":", "&#58;")
     end
 
   end
