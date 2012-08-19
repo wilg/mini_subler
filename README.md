@@ -2,6 +2,16 @@
 
 A lightweight Ruby wrapper around [Subler](http://code.google.com/p/subler/)'s CLI interface.
 
+## Usage
+
+'''ruby
+MiniSubler::Command.vendored.set_metadata("~/movie.mp4", {genre: "Comedy", artwork: "/path/to/artwork"})
+'''
+
+See a full list of metadata tags at http://code.google.com/p/subler/wiki/SublerCLIHelp
+
+MiniSubler underscores the tag names, replaces "#" with "number", and converts it to a symbol. Therefore, the tag `TV Episode #` would become the symbol `:tv_episode_number`/
+
 ## Installation
 
 Add this line to your application's Gemfile:
