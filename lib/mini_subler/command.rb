@@ -39,7 +39,7 @@ module MiniSubler
     def hash_to_subler_hash(h)
       n = {}
       h.each do |key, value|
-        n[key.to_s.titleize.gsub("Tv", "TV").gsub("Id", "ID").gsub("Number", "#")] = value
+        n[key.to_s.titleize.gsub("Tv", "TV").gsub("Id", "ID").gsub("Hd", "HD").gsub("Number", "#")] = value
       end
       n
     end
