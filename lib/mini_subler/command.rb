@@ -20,14 +20,15 @@ module MiniSubler
       metadata_text.each_line do |line|
         if line.include?(self.command_path)
           # Do nothing
+          puts line
         else
           split = line.split ": "
           hash[split[0].parameterize("_").to_sym] = split[1].chomp
         end
       end
       hash
-    rescue
-      nil
+    # rescue
+    #   nil
     end
     
     def set_metadata(file_path, hash)
