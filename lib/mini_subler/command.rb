@@ -14,8 +14,8 @@ module MiniSubler
     attr_accessor :command_path
     
     def get_metadata(file_path)
-      file_path = File.expand_path(file_path) #.gsub(/([\[\]\{\}\*\?\\])/, '\\\\\1')
-      metadata_text = Cocaine::CommandLine.new(self.command_path, "-source :source -listmetadata").run(source: file_path)
+      file_path = File.expand_path(file_path).gsub(/([\[\]\{\}\*\?\\])/, '\\\\\1')
+      metadata_text = Cocaine::CommandLine.new(self.command_path, "-source #{file_path} -listmetadata").run
 
       hash = {}
       metadata_text.each_line do |line|
