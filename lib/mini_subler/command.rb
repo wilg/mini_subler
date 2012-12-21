@@ -16,7 +16,7 @@ module MiniSubler
     def get_metadata(file_path)
       file_path = File.expand_path(file_path) #.gsub(/([\[\]\{\}\*\?\\])/, '\\\\\1')
 
-      cmd = Cocaine::CommandLine.new(self.command_path, "-source :source -listmetadata").
+      cmd = Cocaine::CommandLine.new(self.command_path, "-source :source -listmetadata")
       cmd.command(source: file_path )
       metadata_text = cmd.run
 
