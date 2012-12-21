@@ -15,7 +15,7 @@ module MiniSubler
     
     def get_metadata(file_path)
       file_path = File.expand_path file_path
-      metadata_text = Cocaine::CommandLine.new(self.command_path, "-source :source -listmetadata", source: file_path).run
+      metadata_text = Cocaine::CommandLine.new(self.command_path, "-source #{file_path} -listmetadata").run
       hash = {}
       metadata_text.each_line do |line|
         if line.include?(self.command_path)
