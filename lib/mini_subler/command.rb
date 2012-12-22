@@ -24,12 +24,10 @@ module MiniSubler
           puts line
         else
           split = line.split ": "
-          hash[split[0].parameterize("_").to_sym] = split[1].chomp
+          hash[split[0].parameterize("_").to_sym] = split[1..-1].join(' ').chomp
         end
       end
       hash
-    # rescue
-    #   nil
     end
     
     def set_metadata(file_path, hash)
