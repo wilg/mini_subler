@@ -24,7 +24,7 @@ module MiniSubler
           puts line
         else
           split = line.split ": "
-          hash[split[0].parameterize("_").to_sym] = split[1..-1].join(' ').chomp
+          hash[split[0].parameterize("_").to_sym] = split[1..-1].join(': ').chomp
         end
       end
       hash
