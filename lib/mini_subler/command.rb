@@ -14,20 +14,20 @@ module MiniSubler
     attr_accessor :command_path
     
     def get_metadata(file_path)
-      file_path = File.expand_path file_path
-      metadata_text = Cocaine::CommandLine.new(self.command_path, "-source :source -listmetadata", source: file_path).run
+      file_path = File.expand_path(file_path)
+      metadata_text = ( Cocaine::CommandLine.new(self.command_path, "-source :source -listmetadata") ).
+        run(source: file_path)
       hash = {}
       metadata_text.each_line do |line|
         if line.include?(self.command_path)
           # Do nothing
+          puts line
         else
           split = line.split ": "
-          hash[split[0].parameterize("_").to_sym] = split[1].chomp
+          hash[split[0].parameterize("_").to_sym] = split[1..-1].join(': ').chomp
         end
       end
       hash
-    rescue
-      nil
     end
     
     def set_metadata(file_path, hash)
